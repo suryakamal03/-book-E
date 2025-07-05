@@ -1,5 +1,5 @@
 
-import '../styles/Card.css'
+import '../Styles/Card.css'
   function Card(Title,Author,About,Image){
     return(
       <div className="Card">
