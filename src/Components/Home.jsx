@@ -1,8 +1,13 @@
 import React,{useState,useEffect,useRef} from "react";
-import Card from "./Card";
+import '../Styles/Home.css'
+import Content from "./Content.jsx";
+import Header from "./Header.jsx";
 function Home(){
   return(
-    <Card />
+    <>
+    <Header/>
+    <Content/>
+    </>
   )
 }
 export default Home
