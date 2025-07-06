@@ -1,13 +1,16 @@
 .Card {
   background-color: #2c2c2c;
-  width: 200px;
-  height: 500px;
-  padding: 20px;
+  width: 160px; /* smaller */
+  height: 420px; /* smaller */
+  padding: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 10px;
   text-align: center;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .Card:hover {
@@ -16,9 +19,11 @@
 
 .Card img {
   width: 100%;
-  height: auto;
+  height: 200px; /* fixed height for images */
+  object-fit: cover;
   border-radius: 8px;
 }
+
 .Title, .Author {
   word-wrap: break-word;
   overflow: hidden;
@@ -28,57 +33,83 @@
 }
 
 .Title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: bold;
-  margin: 10px  5px;
+  margin: 10px 5px 5px 5px;
+  color: #fff;
 }
 
 .Author {
-  color: #555;
-  font-size: 0.9rem;
+  color: #ccc;
+  font-size: 0.85rem;
+  margin: 0 5px 5px 5px;
+}
+
+.Card p span {
+  font-size: 0.75rem;
+  color: #ddd;
+  display: block;
+  line-height: 1.2;
+  margin: 5px 0;
+  max-height: 40px; /* avoid overflow */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .preview {
   margin-top: 10px;
-  padding: 8px 12px;
+  padding: 6px 10px;
   background: #585858;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 0.8rem;
 }
-span{
-  cursor: pointer;
-}
-.favorite{
+
+.favorite {
   border: none;
   background-color: #585858;
-  padding: 7px;
-  margin-left: 20px;
+  padding: 6px;
+  margin-left: 50px;
+  margin-right: 50px;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 0.9rem;
 }
+
 .content {
   display: flex;
   flex-direction: row;
-  overflow-x: auto;         
+  overflow-x: auto;
   gap: 20px;
   padding: 20px;
-  white-space: nowrap;      
-  scroll-behavior: smooth;   
+  white-space: nowrap;
+  scroll-behavior: smooth;
 }
+
 .content::-webkit-scrollbar {
   height: 0px;
 }
-h2{
+
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
+}
+
+h2 {
   font-size: 2em;
   color: white;
   margin-left: 20px;
   margin-bottom: 0%;
 }
+
 .Genre {
   color: white;
   font-size: 1.8em;
   font-weight: bold;
-  margin: 100px 20px 20px 20px; 
+  margin: 60px 20px 20px 20px;
 }

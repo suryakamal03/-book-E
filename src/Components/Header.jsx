@@ -1,11 +1,21 @@
-import React,{useState,useEffect,useRef} from "react";
+import React,{useState} from "react";
 import '../Styles/Header.css'
-function Header({filter,setFilter}){
+function Header({onSearch}){
+  const[filter,setFilter] = useState('');
+  function handleSearch(e){
+    if (e.key === 'Enter'){
+      onSearch(filter);
+      console.log(`the filter${filter}`)
+    }
+  }
+  function top(){
+
+  }
   return(
   <div className="header">
     <h3>E-BOOK</h3>
     <div className="btn">
-    <button className="home">Home</button>
+    <button className="home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</button>
     <button className="favoritebtn">Favorite</button>
     <select name="filter" className="filters">
       <option value="All">Categaries</option>
@@ -19,7 +29,7 @@ function Header({filter,setFilter}){
     <div className="both">
     <div className="search-box">
     <span className="search-icon">🔍</span>
-    <input type="text" placeholder="Title,Author,Genre " value={filter} onChange={(e) => setFilter(e.target.value)}/>
+    <input type="text" placeholder="Title,Author,Genre " value={filter} onChange={(e) => setFilter(e.target.value)} onKeyDown={handleSearch}/>
     </div>
     <button className="login">😀</button>
     </div>

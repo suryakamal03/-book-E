@@ -1,4 +1,4 @@
-
+import React,{useState} from 'react';
 import '../Styles/Card.css'
   function Card({Title,Author,About,Image,Genre}){
     const [liked, setLiked] = useState(false); 
