@@ -11,10 +11,12 @@ html, body {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 999;
   display: flex;
+  flex-wrap: wrap; 
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   padding: 0 20px;
   height: 60px;
 }
@@ -104,4 +106,21 @@ html, body {
   right: 12px;
   font-size: 1rem;
   color: #888;
+}
+.login {
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  margin-right: 40px;
+  position: relative;
+  top: 0;
+  right: 0;
+  max-height: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -5,7 +5,6 @@ import Header from "./Header.jsx";
 function Home(){
   return(
     <>
-    <Header/>
     <Content/>
     </>
   )

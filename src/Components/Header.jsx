@@ -8,9 +8,7 @@ function Header({onSearch}){
       console.log(`the filter${filter}`)
     }
   }
-  function top(){
-
-  }
+  
   return(
   <div className="header">
     <h3>E-BOOK</h3>
@@ -31,7 +29,7 @@ function Header({onSearch}){
     <span className="search-icon">🔍</span>
     <input type="text" placeholder="Title,Author,Genre " value={filter} onChange={(e) => setFilter(e.target.value)} onKeyDown={handleSearch}/>
     </div>
-    <button className="login">😀</button>
+    <button className="login">👤</button>
     </div>
   </div>)
 }
