@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useRef} from "react";
 import '../Styles/Header.css'
-function Header(){
+function Header({filter,setFilter}){
   return(
   <div className="header">
     <h3>E-BOOK</h3>
@@ -19,7 +19,7 @@ function Header(){
     <div className="both">
     <div className="search-box">
     <span className="search-icon">🔍</span>
-    <input type="text" placeholder="Title,Author,Genre " />
+    <input type="text" placeholder="Title,Author,Genre " value={filter} onChange={(e) => setFilter(e.target.value)}/>
     </div>
     <button className="login">😀</button>
     </div>

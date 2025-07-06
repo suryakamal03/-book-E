@@ -3,15 +3,21 @@ html, body {
   padding: 0;
   box-sizing: border-box;
 }
-.header{
+.header {
   background-color: black;
-  /* position: absolute; */
-  /* top: 0%; */
+  position: fixed;           /* stays at top */
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
+  z-index: 1000;              
   display: flex;
-  flex-direction: space-between;
-  padding: 0;
+  /* justify-content: space-between; 
+  align-items: center;      */
+  padding: 0 20px;
+  height: 60px;
 }
+
 .header h3{
   color: orangered;
   /* font-size: 1.5em; */
