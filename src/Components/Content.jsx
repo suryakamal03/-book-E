@@ -13,13 +13,18 @@ function Content() {
   const [scifis,setScifi] = useState([]);
   const [fantasys,setFantasys] = useState([]);
 
+  const [isLoading,setLoading] = useState(true);
+  const [fetchLoading,setfetchLoading] =useState(true);
+
   const handleSearch = (query) => {
     setSearchQuery(query);
+    setfetchLoading(true);
   };
 
   useEffect(() => {
     const fetchbook = async () => {
       try {
+        
         const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=action&filter=ebooks&maxResults=20`);
         const adven = await fetch(`https://www.googleapis.com/books/v1/volumes?q=adventure&filter=ebooks&maxResults=20`);
         const horr = await fetch(`https://www.googleapis.com/books/v1/volumes?q=horror&filter=ebooks&maxResults=20`);
@@ -37,7 +42,8 @@ function Content() {
         const data6 = await tri.json();
         const data7 = await sci.json();
         const data8 = await fan.json();
-
+        
+        setLoading(true);
         setBooks(data.items || []);
         setAdventures(data2.items || []);
         setHorror(data3.items || []);
@@ -56,6 +62,8 @@ function Content() {
         }
       } catch (error) {
         console.error("Error fetching books:", error);
+      }finally{
+        setLoading(false)
       }
     };
 
@@ -65,10 +73,16 @@ function Content() {
   return (
     <div className="totalwrap">
       <Header onSearch={handleSearch} />
-
       {searchQuery ? (
         <div className="wrap">
           <h2>Search Results</h2>
+           {fetchLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
           <div className="contents">
             {searchResults.map((book, index) => (
               <div key={book.id || index} className="Card">
@@ -101,12 +115,20 @@ function Content() {
               </div>
             ))}
           </div>
+)}
         </div>
       ) : (
         <>
           {/* Action Section */}
           <div className="wrap">
             <h2 className="Genre">Action</h2>
+            {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {books.map((book, index) => (
                 <div key={book.id || index} className="Card">
@@ -137,11 +159,19 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
 
           {/* Adventure Section */}
           <div className="wrap">
             <h2 className="Genre">Adventure</h2>
+            {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {adventures.map((adventure, index) => (
                 <div key={adventure.id || index} className="Card">
@@ -172,11 +202,19 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
           
           {/* triller Section */}
           <div className="wrap">
             <h2 className="Genre">Triller</h2>
+            {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {trillers.map((triller, index) => (
                 <div key={triller.id || index} className="Card">
@@ -207,11 +245,19 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
           
           {/* scifi Section */}
           <div className="wrap">
             <h2 className="Genre">Sci-fi</h2>
+            {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {scifis.map((scifi, index) => (
                 <div key={scifi.id || index} className="Card">
@@ -242,11 +288,19 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
           
           {/* fantancy Section */}
           <div className="wrap">
             <h2 className="Genre">Fantacy</h2>
+            {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {fantasys.map((fantasy, index) => (
                 <div key={fantasy.id || index} className="Card">
@@ -277,11 +331,19 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
 
           {/* comedy Section */}
           <div className="wrap">
             <h2 className="Genre">Comedy</h2>
+            {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {comedys.map((comedys, index) => (
                 <div key={comedys.id || index} className="Card">
@@ -312,11 +374,19 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
           
           {/* Romance Section */}
           <div className="wrap">
             <h2 className="Genre">Romance</h2>
+          {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {romances.map((romance, index) => (
                 <div key={romance.id || index} className="Card">
@@ -347,11 +417,19 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
 
           {/* Horror Section */}
           <div className="wrap">
             <h2 className="Genre">Horror</h2>
+            {isLoading ? (
+  <div className="content">
+    {[...Array(6)].map((_, i) => (
+      <div className="Card skeleton" key={i}></div>
+    ))}
+  </div>
+) : (
             <div className="content">
               {horrors.map((horror, index) => (
                 <div key={horror.id || index} className="Card">
@@ -382,6 +460,7 @@ function Content() {
                 </div>
               ))}
             </div>
+)}
           </div>
         </>
       )}
