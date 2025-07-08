@@ -14,15 +14,15 @@ function Header({onSearch}){
     <h3>E-BOOK</h3>
     <div className="btn">
     <button className="home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</button>
-    <button className="favoritebtn">Favorite</button>
-    <select name="filter" className="filters">
+    <button className="favoritebtn" onClick={() =>window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}>Favorite</button>
+    {/* <select name="filter" className="filters">
       <option value="All">Categories </option>
       <option value="action">Action</option>
       <option value="horror">Horror</option>
       <option value="adventure">Adventure</option>
       <option value="comedy">Comedy</option>
       <option value="feel good">Feel good</option>
-    </select>
+    </select> */}
   </div>
     <div className="both">
     <div className="search-box">

@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header.jsx";
 import Card from "./Card.jsx";
+function popup(){
+    alert('90% completed need to add an auth');
+  }
+  popup();
 function Content() {
+  
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [books, setBooks] = useState([]); // Action books
@@ -16,6 +21,21 @@ function Content() {
   const [isLoading,setLoading] = useState(true);
   const [fetchLoading,setfetchLoading] =useState(true);
 
+  const [favorites, setFavorites] = useState([]);
+
+  const toggleFavorite = (book) => {
+  const isAlreadyFavorite = favorites.find(fav => fav.id === book.id);
+
+  if (isAlreadyFavorite) {
+    // Remove from favorites
+    setFavorites(favorites.filter(fav => fav.id !== book.id));
+  } else {
+    // Add to favorites
+    setFavorites([...favorites, book]);
+  }
+};
+
+  
   const handleSearch = (query) => {
     setSearchQuery(query);
     setfetchLoading(true);
@@ -74,7 +94,9 @@ function Content() {
   return (
     <div className="totalwrap">
       <Header onSearch={handleSearch} />
+      
       {searchQuery ? (
+        
         <div className="wrap">
           <h2>Search Results</h2>
            {fetchLoading ? (
@@ -112,7 +134,13 @@ function Content() {
                     Preview
                   </a>
                 </button>
-                <button className="favorite">🤍</button>
+                <button
+  className="favorite"
+  onClick={() => toggleFavorite(book)}
+>
+  {favorites.find(fav => fav.id === book.id) ? '❤️' : '🤍'}
+</button>
+
               </div>
             ))}
           </div>
@@ -156,7 +184,13 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(book)}
+>
+  {favorites.find(fav => fav.id === book.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
@@ -199,7 +233,13 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(adventure)}
+>
+  {favorites.find(fav => fav.id === adventure.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
@@ -242,7 +282,13 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(triller)}
+>
+  {favorites.find(fav => fav.id === triller.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
@@ -285,7 +331,13 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(scifi)}
+>
+  {favorites.find(fav => fav.id === scifi.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
@@ -328,7 +380,13 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(fantasy)}
+>
+  {favorites.find(fav => fav.id === fantasy.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
@@ -371,7 +429,13 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(comedys)}
+>
+  {favorites.find(fav => fav.id === comedys.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
@@ -414,7 +478,13 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(romance)}
+>
+  {favorites.find(fav => fav.id === romance.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
@@ -457,15 +527,56 @@ function Content() {
                       Preview
                     </a>
                   </button>
-                  <button className="favorite">🤍</button>
+                  <button
+  className="favorite"
+  onClick={() => toggleFavorite(horror)}
+>
+  {favorites.find(fav => fav.id === horror.id) ? '❤️' : '🤍'}
+</button>
+
                 </div>
               ))}
             </div>
 )}
+  {favorites.length > 0 && (
+  <div className="wrap">
+    <h2 className="Genre">Favorites</h2>
+    <div className="content">
+      {favorites.map((book, index) => (
+        <div key={book.id || index} className="Card">
+          <img
+            src={book.volumeInfo?.imageLinks?.thumbnail || ""}
+            alt={book.volumeInfo?.title || "Book cover"}
+            width={100}
+            height={150}
+          />
+          <h4 className="Title">{book.volumeInfo?.title || "No Title"}</h4>
+          <h5 className="Author">
+            {book.volumeInfo?.authors?.join(", ") || "Unknown Author"}
+          </h5>
+          <p>
+            <span>
+              {book.volumeInfo?.description?.substring(0, 20) || "No description available"}...
+            </span>
+          </p>
+          <button
+            className="favorite"
+            onClick={() => toggleFavorite(book)}
+          >
+            ❤️
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
           </div>
         </>
+        
       )}
     </div>
+    
   );
 }
 

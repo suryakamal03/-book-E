@@ -71,8 +71,9 @@
   border: none;
   background-color: #585858;
   padding: 6px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-top: 10px;
+  /* margin-left: 50px;
+  margin-right: 50px; */
   border-radius: 10px;
   cursor: pointer;
   font-size: 0.9rem;
