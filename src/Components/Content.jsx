@@ -64,6 +64,7 @@ function Content() {
         console.error("Error fetching books:", error);
       }finally{
         setLoading(false)
+        setfetchLoading(false)
       }
     };
 

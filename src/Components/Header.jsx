@@ -16,7 +16,7 @@ function Header({onSearch}){
     <button className="home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</button>
     <button className="favoritebtn">Favorite</button>
     <select name="filter" className="filters">
-      <option value="All">Categaries</option>
+      <option value="All">Categories </option>
       <option value="action">Action</option>
       <option value="horror">Horror</option>
       <option value="adventure">Adventure</option>
