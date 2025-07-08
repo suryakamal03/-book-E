@@ -11,7 +11,7 @@ function Header({onSearch}){
   
   return(
   <div className="header">
-    <h3>E-BOOK</h3>
+    <p>E-BOOK</p>
     <div className="btn">
     <button className="home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</button>
     <button className="favoritebtn" onClick={() =>window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}>Favorite</button>

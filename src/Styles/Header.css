@@ -21,10 +21,15 @@ html, body {
   height: 60px;
 }
 
-.header h3 {
+.header p {
   color: orangered;
-  font-family: 'Courier New', Courier, monospace;
-  margin: 0;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  font-size: 20px;
+  /* letter-spacing: 2px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header .btn {
@@ -59,7 +64,7 @@ html, body {
 
 .btn select:hover,
 .btn button:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
 }
 
 .both button {
